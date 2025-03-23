@@ -1,0 +1,17 @@
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://bipjl33nov0mc"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_oh5r3"]
+
+[sub_resource type="Sky" id="Sky_xk227"]
+sky_material = SubResource("PhysicalSkyMaterial_oh5r3")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_xk227")
+tonemap_mode = 2
+tonemap_white = 6.0
+ssao_enabled = true
+fog_enabled = true
+fog_sun_scatter = 0.17
+fog_density = 0.0099
+fog_aerial_perspective = 1.0

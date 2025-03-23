@@ -1,0 +1,209 @@
+[gd_scene load_steps=19 format=3 uid="uid://cllt1pkgdt2g0"]
+
+[ext_resource type="PackedScene" uid="uid://dxw7cledbpiia" path="res://addons/proto-csgs/proto_csg_box_3d.tscn" id="1_wbkha"]
+[ext_resource type="PackedScene" uid="uid://djhw341c0sgcl" path="res://scenes/character/character.tscn" id="3_42plc"]
+[ext_resource type="Texture2D" uid="uid://bv0xfvixusiuf" path="res://addons/proto-csgs/textures/light/texture_07.png" id="3_nxbj3"]
+[ext_resource type="Texture2D" uid="uid://x64yy8qx0ht2" path="res://addons/proto-csgs/textures/dark/texture_06.png" id="4_nxbj3"]
+[ext_resource type="Texture2D" uid="uid://0d6wqbcloqhf" path="res://addons/proto-csgs/textures/orange/texture_06.png" id="5_vor6v"]
+[ext_resource type="PackedScene" uid="uid://d0g4x81hoc0ss" path="res://scenes/machines/machine.tscn" id="6_vor6v"]
+[ext_resource type="Script" uid="uid://b3pp313fjjanw" path="res://scenes/items/world_item.gd" id="7_ak6bi"]
+[ext_resource type="Resource" uid="uid://bkefjgjin85ne" path="res://scenes/items/item_sample.tres" id="8_ak6bi"]
+[ext_resource type="PackedScene" uid="uid://gpd0ye4eb2y2" path="res://scenes/items/item_sample_mesh.tscn" id="9_1xy5d"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_42plc"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_24bls"]
+sky_material = SubResource("ProceduralSkyMaterial_42plc")
+
+[sub_resource type="Environment" id="Environment_nxbj3"]
+background_mode = 2
+sky = SubResource("Sky_24bls")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vor6v"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("3_nxbj3")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ak6bi"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_nxbj3")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1xy5d"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("5_vor6v")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ts4f"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("5_vor6v")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ds6an"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("5_vor6v")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8do3e"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("5_vor6v")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[node name="GameMap" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_nxbj3")
+
+[node name="Character" parent="." instance=ExtResource("3_42plc")]
+
+[node name="Building" type="Node3D" parent="."]
+
+[node name="Floor" parent="Building" instance=ExtResource("1_wbkha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.5, 4)
+size = Vector3(32, 1, 40)
+material = SubResource("StandardMaterial3D_vor6v")
+block_color = 2
+block_style = 6
+
+[node name="Ceiling" parent="Building" instance=ExtResource("1_wbkha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 5.5, 4)
+layers = 2
+size = Vector3(32, 1, 40)
+material = SubResource("StandardMaterial3D_ak6bi")
+block_style = 5
+
+[node name="ProtoCSGBox3D2" parent="Building" instance=ExtResource("1_wbkha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2.5, -15.5)
+size = Vector3(32, 5, 1)
+material = SubResource("StandardMaterial3D_1xy5d")
+block_color = 3
+block_style = 5
+
+[node name="ProtoCSGBox3D3" parent="Building" instance=ExtResource("1_wbkha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2.5, 23.5)
+size = Vector3(32, 5, 1)
+material = SubResource("StandardMaterial3D_6ts4f")
+block_color = 3
+block_style = 5
+
+[node name="ProtoCSGBox3D4" parent="Building" instance=ExtResource("1_wbkha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 2.5, 4)
+size = Vector3(1, 5, 38)
+material = SubResource("StandardMaterial3D_ds6an")
+block_color = 3
+block_style = 5
+
+[node name="ProtoCSGBox3D5" parent="Building" instance=ExtResource("1_wbkha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5, 2.5, 4)
+size = Vector3(1, 5, 38)
+material = SubResource("StandardMaterial3D_8do3e")
+block_color = 3
+block_style = 5
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4, 5, 9)
+shadow_enabled = true
+spot_range = 10.0
+spot_attenuation = 0.5
+spot_angle = 60.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 7, 5, 9)
+shadow_enabled = true
+spot_range = 10.0
+spot_attenuation = 0.5
+spot_angle = 60.0
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 17, 5, 9)
+shadow_enabled = true
+spot_range = 10.0
+spot_attenuation = 0.5
+spot_angle = 60.0
+
+[node name="SpotLight3D7" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4, 5, 0)
+shadow_enabled = true
+spot_range = 10.0
+spot_attenuation = 0.5
+spot_angle = 60.0
+
+[node name="SpotLight3D8" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 7, 5, 0)
+shadow_enabled = true
+spot_range = 10.0
+spot_attenuation = 0.5
+spot_angle = 60.0
+
+[node name="SpotLight3D9" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 17, 5, 0)
+shadow_enabled = true
+spot_range = 10.0
+spot_attenuation = 0.5
+spot_angle = 60.0
+
+[node name="SpotLight3D10" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4, 5, -9)
+shadow_enabled = true
+spot_range = 10.0
+spot_attenuation = 0.5
+spot_angle = 60.0
+
+[node name="SpotLight3D11" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 7, 5, -9)
+shadow_enabled = true
+spot_range = 10.0
+spot_attenuation = 0.5
+spot_angle = 60.0
+
+[node name="SpotLight3D12" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 17, 5, -9)
+shadow_enabled = true
+spot_range = 10.0
+spot_attenuation = 0.5
+spot_angle = 60.0
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4, 5, 18)
+shadow_enabled = true
+spot_range = 10.0
+spot_attenuation = 0.5
+spot_angle = 60.0
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 7, 5, 18)
+shadow_enabled = true
+spot_range = 10.0
+spot_attenuation = 0.5
+spot_angle = 60.0
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 17, 5, 18)
+shadow_enabled = true
+spot_range = 10.0
+spot_attenuation = 0.5
+spot_angle = 60.0
+
+[node name="Machine" parent="." instance=ExtResource("6_vor6v")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, 0, -7)
+
+[node name="WorldItem" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+script = ExtResource("7_ak6bi")
+item = ExtResource("8_ak6bi")
+metadata/_custom_type_script = "uid://b3pp313fjjanw"
+
+[node name="item_sample_mesh" parent="." instance=ExtResource("9_1xy5d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
