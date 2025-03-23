@@ -1,0 +1,24 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://24qub38yvilu"]
+
+[sub_resource type="Shader" id="Shader_06jv5"]
+code = "shader_type spatial;
+render_mode blend_mix, cull_front, unshaded;
+
+uniform vec4 color : source_color = vec4(1,0,0,1);
+uniform float size : hint_range(1.0, 1.5, 0.01) = 1.05;
+
+void vertex() {
+	VERTEX *= size;
+}
+
+void fragment() {
+	ALBEDO = color.rgb;
+	ALPHA = color.a;
+}
+"
+
+[resource]
+render_priority = 0
+shader = SubResource("Shader_06jv5")
+shader_parameter/color = Color(0.182447, 0.638449, 0.190657, 1)
+shader_parameter/size = 1.05

@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://djhw341c0sgcl"]
+[gd_scene load_steps=7 format=3 uid="uid://djhw341c0sgcl"]
 
 [ext_resource type="Script" uid="uid://clofchui5n2l0" path="res://scenes/character/character.gd" id="1_6nn2t"]
 [ext_resource type="Script" uid="uid://cg6p0wd388t60" path="res://components/interaction/interaction_raycast.gd" id="2_cuyo6"]
-[ext_resource type="Script" uid="uid://0i6nv72yr2s1" path="res://addons/ninetailsrabbit.interaction_kit_3d/src/interactors/raycast_interactor_3d.gd" id="2_mutn8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nxwtt"]
 radius = 0.3
@@ -21,11 +20,10 @@ corner_radius_bottom_left = 4
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_6nn2t"]
 
-[node name="Character" type="CharacterBody3D" node_paths=PackedStringArray("camera", "raycast", "item_slot")]
+[node name="Character" type="CharacterBody3D" node_paths=PackedStringArray("camera", "item_slot")]
 script = ExtResource("1_6nn2t")
 camera = NodePath("Head/Camera3D")
 amplitude = 0.01
-raycast = NodePath("Head/Camera3D/InteractionRaycast")
 item_slot = NodePath("Head/Camera3D/ItemSlot")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -41,17 +39,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
 
-[node name="RayCastInteractor3D" type="RayCast3D" parent="Head/Camera3D"]
-target_position = Vector3(0, 0, -4)
-collision_mask = 96
-script = ExtResource("2_mutn8")
-metadata/_custom_type_script = "uid://0i6nv72yr2s1"
-
 [node name="InteractionRaycast" type="RayCast3D" parent="Head/Camera3D" node_paths=PackedStringArray("pickup_slot")]
-visible = false
-enabled = false
 target_position = Vector3(0, 0, -4)
-collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
 script = ExtResource("2_cuyo6")
 pickup_slot = NodePath("../ItemSlot")
 metadata/_custom_type_script = "uid://cg6p0wd388t60"

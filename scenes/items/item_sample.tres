@@ -1,10 +1,8 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bkefjgjin85ne"]
+[gd_resource type="Resource" script_class="BaseItem" load_steps=2 format=3 uid="uid://bkefjgjin85ne"]
 
-[ext_resource type="PackedScene" uid="uid://2c72fxssa0oo" path="res://scenes/items/item_sample_mesh.glb" id="1_0ievn"]
 [ext_resource type="Script" uid="uid://bcdqgacmv4ae0" path="res://scenes/items/item.gd" id="1_u8rpt"]
 
 [resource]
 script = ExtResource("1_u8rpt")
 name = "Sample"
-scene = ExtResource("1_0ievn")
 metadata/_custom_type_script = "uid://bcdqgacmv4ae0"

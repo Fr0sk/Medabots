@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cllt1pkgdt2g0"]
+[gd_scene load_steps=17 format=3 uid="uid://cllt1pkgdt2g0"]
 
 [ext_resource type="PackedScene" uid="uid://dxw7cledbpiia" path="res://addons/proto-csgs/proto_csg_box_3d.tscn" id="1_wbkha"]
 [ext_resource type="PackedScene" uid="uid://djhw341c0sgcl" path="res://scenes/character/character.tscn" id="3_42plc"]
@@ -6,9 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://x64yy8qx0ht2" path="res://addons/proto-csgs/textures/dark/texture_06.png" id="4_nxbj3"]
 [ext_resource type="Texture2D" uid="uid://0d6wqbcloqhf" path="res://addons/proto-csgs/textures/orange/texture_06.png" id="5_vor6v"]
 [ext_resource type="PackedScene" uid="uid://d0g4x81hoc0ss" path="res://scenes/machines/machine.tscn" id="6_vor6v"]
-[ext_resource type="Script" uid="uid://b3pp313fjjanw" path="res://scenes/items/world_item.gd" id="7_ak6bi"]
-[ext_resource type="Resource" uid="uid://bkefjgjin85ne" path="res://scenes/items/item_sample.tres" id="8_ak6bi"]
-[ext_resource type="PackedScene" uid="uid://gpd0ye4eb2y2" path="res://scenes/items/item_sample_mesh.tscn" id="9_1xy5d"]
+[ext_resource type="PackedScene" uid="uid://dt6d3ywdyid86" path="res://scenes/items/sample_item_scene.tscn" id="7_hmaig"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_42plc"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -199,11 +197,5 @@ spot_angle = 60.0
 [node name="Machine" parent="." instance=ExtResource("6_vor6v")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, 0, -7)
 
-[node name="WorldItem" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
-script = ExtResource("7_ak6bi")
-item = ExtResource("8_ak6bi")
-metadata/_custom_type_script = "uid://b3pp313fjjanw"
-
-[node name="item_sample_mesh" parent="." instance=ExtResource("9_1xy5d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+[node name="SampleItemScene" parent="." instance=ExtResource("7_hmaig")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75304, 0, 0)

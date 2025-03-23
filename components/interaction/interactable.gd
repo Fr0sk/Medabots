@@ -1,6 +1,10 @@
-class_name Interactable extends Node3D
+class_name Interactable extends Area3D
 
-signal interacted(instigator: Node)
+signal interacted(instigator: Interactor)
+
+@export var mesh: GeometryInstance3D
+@export var outline: Material
+
 
 ## Will recursivelly search for parent nodes to find the closes Interactable.
 ## Returns null if no Interactable found.
@@ -16,3 +20,11 @@ static func get_from(node: Node) -> Interactable:
 
 func perform_interaction(instigator: Node) -> void:
 	interacted.emit(instigator)
+
+
+func focus() -> void:
+	mesh.material_overlay = outline
+
+
+func unfocus() -> void:
+	mesh.material_overlay = null

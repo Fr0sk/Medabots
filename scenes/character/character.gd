@@ -22,7 +22,7 @@ var t_bob := 0.0
 
 
 @export_category("Interaction")
-@export var raycast: InteractionRaycast
+@export var interactor: Interactor
 @export var item_slot: Node3D
 
 
@@ -37,8 +37,8 @@ func _input(event: InputEvent) -> void:
 		# Clamp between -40º and 60º
 		camera.rotation.x = clamp(camera.rotation.x, -DEG_60, DEG_80)
 	
-	#if Input.is_action_just_pressed("interact"):
-		#raycast.interact()
+	if Input.is_action_just_pressed("interact"):
+		interactor.interact()
 
 
 func _physics_process(delta: float) -> void:
